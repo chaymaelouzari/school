@@ -26,6 +26,8 @@ namespace School
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddDbContext<ModelSchool>(options => options.UseSqlServer(Configuration.GetConnectionString("School")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,7 +54,7 @@ namespace School
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Estudiantes}/{action=Index}/{id?}");
             });
         }
     }

@@ -1,0 +1,56 @@
+@model List<Person>
+
+@section Styles { 
+}
+
+@section Scripts {
+    <script type="text/javascript">        
+        $(document).ready(function() { 
+             App.Page.Estudiantes.List.OnLoad();
+        });      
+    </script>
+}
+
+<br />
+<div class="row">
+    <div class="col">
+        <h1>Listado de Estudiantes</h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table id="estudiantes" class="table table-striped">
+            <thead>
+                <tr>
+                    <th><b>ID</b></th>
+                    <th><b>LastName</b></th>
+                    <th><b>FirstName </b></th>
+                    <th><b>HireDate</b></th>
+                    <th><b>EnrollmentDate</b></th>
+                    <th><b> </b></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> 
+                       <a href="/estudiantes @item.PersonID">@item.PersonID</a>
+                                          
+                    </td>
+                    <td>@item.LastName</td>
+                    <td>
+                        @item.FirstName  <br />
+                    </td>
+                    <td>
+                        @item.HireDate <br />
+                    </td>
+                    <td>@item.EnrollmentDate</td>
+                    <td></td>
+                </tr>
+            }                
+            </tbody>
+        </table>
+    </div>
+</div>
